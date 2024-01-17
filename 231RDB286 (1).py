@@ -4,14 +4,16 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 import time
-import PyPDF2
 import pandas as pd
+import webbrowser
+import pyautogui
 
-specific_country = input("do you want tp know about specific country ? ")
+
+specific_country = input("do you want to know forecast or listen to radio(yes for forecast / no for radio) ? ")
 
 
 if specific_country == 'yes':
-        city = input('which country? ')
+        city = input('which countrys forecast you want to know? ')
         driver = webdriver.Chrome()
 
         driver.get("https://www.yr.no/en")
@@ -53,4 +55,19 @@ if specific_country == 'yes':
                 driver.quit()
            
 elif specific_country == 'no':
-        print('TAVA MAMMA')
+        try:
+                radio = input('which radio do you want to listen to? ')
+                driver = webdriver.Chrome()
+        
+                webbrowser.open_new_tab('http://radio.lv/' + radio +'/')
+                
+                time.sleep(4)
+                
+                pyautogui.moveTo(310, 330)
+                
+                pyautogui.click()
+                
+                time.sleep(1)
+        except TimeoutException:
+                print("Radio not found or does not exist.")
+                driver.quit()
