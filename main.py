@@ -9,11 +9,11 @@ import webbrowser
 import pyautogui
 
 
-specific_country = input("do you want to know forecast or listen to radio(yes for forecast / no for radio) ? ")
+specific_country = input("Do you want to know forecast or listen to radio(yes for forecast / no for radio) ? ")
 
 
 if specific_country == 'yes':
-        city = input('which countrys forecast you want to know? ')
+        city = input('Which city forecast you want to know? ')
         driver = webdriver.Chrome()
 
         driver.get("https://www.yr.no/en")
@@ -51,12 +51,12 @@ if specific_country == 'yes':
 
                 driver.quit()
         except TimeoutException:
-                print("Country not found or does not exist.")
+                print("City not found or does not exist.")
                 driver.quit()
            
 elif specific_country == 'no':
         try:
-                radio = input('which radio do you want to listen to? ')
+                radio = input('Which radio station do you want to listen to? ')
                 driver = webdriver.Chrome()
         
                 webbrowser.open_new_tab('http://radio.lv/' + radio +'/')
@@ -69,5 +69,5 @@ elif specific_country == 'no':
                 
                 time.sleep(1)
         except TimeoutException:
-                print("Radio not found or does not exist.")
+                print("Radio station not found or does not exist.")
                 driver.quit()
