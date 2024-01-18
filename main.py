@@ -8,9 +8,7 @@ import pandas as pd
 import webbrowser
 import pyautogui
 
-
-specific_country = input("Do you want to know forecast or listen to radio(yes for forecast / no for radio) ? ")
-
+specific_country = input("Do you want to know the forecast or listen to radio(yes for forecast / no for radio) ? ")
 
 if specific_country == 'yes':
         city = input('Which city forecast you want to know? ')
@@ -42,9 +40,6 @@ if specific_country == 'yes':
                 temp = temp.split('\n')
                 pos1 = [line.split() for line in temp]
 
-                # Create a pandas DataFrame from the data
-                
-                
                 df = pd.DataFrame(list(zip(pos1)), columns = ['[temperature:]']) 
                 removed_df = df.drop(df.index[0])
                 print(removed_df)
